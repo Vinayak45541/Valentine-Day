@@ -286,3 +286,76 @@ button {
     opacity: 1;
   }
 }
+
+/* Big celebratory caption */
+.video-container .big-caption {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 11000;
+  margin-bottom: 8px;
+  padding-top: 6vh;
+}
+
+.video-container .big-caption .lines {
+  text-align: center;
+  line-height: 1.05;
+}
+
+.video-container .big-caption .line1 {
+  font-size: clamp(1.6rem, 6vw, 3.2rem);
+  font-weight: 900;
+  color: #ff2d6f; /* vivid pink */
+  text-shadow:
+    0 8px 30px rgba(255, 45, 111, 0.25),
+    0 3px 8px rgba(0, 0, 0, 0.32);
+  transform: scale(0.96);
+  animation: captionIn 0.9s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+}
+
+.video-container .big-caption .line2 {
+  font-size: clamp(1rem, 4vw, 1.6rem);
+  font-weight: 700;
+  margin-top: 8px;
+  color: #fff;
+  text-shadow: 0 6px 20px rgba(0, 0, 0, 0.42);
+  animation: captionIn 1s 0.15s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+}
+
+@keyframes captionIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-6px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* subtle glow behind caption (kept relative) */
+.video-container .big-caption::before {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60vw;
+  max-width: 800px;
+  height: 14vh;
+  background: radial-gradient(
+    circle at 50% 40%,
+    rgba(255, 120, 160, 0.12),
+    transparent 40%
+  );
+  filter: blur(28px);
+  z-index: 10990;
+  opacity: 0.95;
+}
