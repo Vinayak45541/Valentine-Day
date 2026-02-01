@@ -1,37 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pookie Valentine 💖</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pookie Valentine 💖</title>
 
-<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-</head>
-<body>
+  <body>
+    <!-- START PAGE -->
+    <div id="startPage" class="start-page">
+      <div class="start-content">
+        <h2>💖 Happy Valentine's Day 💖</h2>
+        <p>Click to Begin Your Journey</p>
+        <button id="startBtn" class="start-btn">✨ START ✨</button>
+      </div>
+    </div>
 
-<div class="main">
+    <!-- MAIN CONTENT -->
+    <div class="main" style="display: none">
+      <h1 id="text">Hey ...Do You Love Mee....?? 🥺</h1>
 
-  <h1 id="text">Hey Pookie... 🥺</h1>
+      <img src="assets/images/cat.png" id="cat" />
 
-  <img src="assets/images/cat.png" id="cat">
+      <div class="buttons">
+        <button id="yesBtn">YES 💖</button>
+        <button id="noBtn">NO 💔</button>
+      </div>
+    </div>
 
-  <div class="buttons">
-    <button id="yesBtn">YES 💖</button>
-    <button id="noBtn">NO 💔</button>
-  </div>
+    <!-- AUDIO -->
+    <audio id="startAudio" loop preload="auto">
+      <source src="assets/music/start.mpeg" type="audio/mpeg" />
+    </audio>
 
-</div>
+    <audio id="endAudio" loop preload="auto">
+      <source src="assets/music/end.mpeg" type="audio/mpeg" />
+    </audio>
 
-<!-- Video Overlay -->
-<video id="loveVideo" muted playsinline loop>
-  <source src="assets/video/love.mp4" type="video/mp4">
-</video>
+    <!-- VIDEO OVERLAY -->
+    <div class="video-container">
+      <video id="loveVideo" playsinline loop>
+        <source src="assets/video/love.mp4" type="video/mp4" />
+      </video>
 
-<script src="libs/confetti.min.js"></script>
-<script src="js/main.js"></script>
-<script src="js/interaction.js"></script>
-<script src="js/animation.js"></script>
+      <button id="restartBtn">🔄 Home</button>
+    </div>
 
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/interaction.js"></script>
+    <script src="js/animation.js"></script>
+  </body>
 </html>
