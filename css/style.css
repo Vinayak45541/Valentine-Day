@@ -163,6 +163,9 @@ button {
   background: linear-gradient(120deg, #ff9ab3 0%, #ffc0d6 50%, #ffdfe8 100%);
   animation: bgMove 10s ease-in-out infinite;
   overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 #loveVideo {
@@ -232,6 +235,19 @@ button {
     max-height: 70vh;
     border-radius: 12px;
   }
+
+  /* place the home button top-right on small screens */
+  #restartBtn {
+    position: absolute;
+    top: 18px;
+    right: 16px;
+    transform: none;
+  }
+
+  /* give more top padding so caption + button don't overlap video */
+  .video-container {
+    padding-top: 10vh;
+  }
 }
 
 #restartBtn {
@@ -245,6 +261,8 @@ button {
   transition:
     transform 0.2s,
     box-shadow 0.2s;
+  position: relative;
+  z-index: 11100;
 }
 
 #restartBtn:hover {
