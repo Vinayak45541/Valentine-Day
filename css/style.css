@@ -163,15 +163,12 @@ button {
   background: linear-gradient(120deg, #ff9ab3 0%, #ffc0d6 50%, #ffdfe8 100%);
   animation: bgMove 10s ease-in-out infinite;
   overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 #loveVideo {
-  width: min(500px, 80vw);
+  width: min(380px, 70vw);
   height: auto;
-  max-height: 80vh;
+  max-height: 65vh;
   object-fit: cover;
   border-radius: 16px;
   box-shadow: 0 10px 50px rgba(255, 79, 139, 0.3);
@@ -208,6 +205,31 @@ button {
   }
 }
 
+/* Video caption above */
+.video-container .video-caption {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #fff;
+  text-shadow:
+    0 0 15px rgba(255, 20, 147, 0.9),
+    0 0 30px rgba(255, 105, 180, 0.7),
+    0 6px 20px rgba(0, 0, 0, 0.5);
+  filter: drop-shadow(0 0 8px rgba(255, 20, 147, 0.8));
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  animation: captionPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes captionPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
 @keyframes bgMove {
   0% {
     filter: hue-rotate(0deg) saturate(1);
@@ -235,19 +257,6 @@ button {
     max-height: 70vh;
     border-radius: 12px;
   }
-
-  /* place the home button top-right on small screens */
-  #restartBtn {
-    position: absolute;
-    top: 18px;
-    right: 16px;
-    transform: none;
-  }
-
-  /* give more top padding so caption + button don't overlap video */
-  .video-container {
-    padding-top: 10vh;
-  }
 }
 
 #restartBtn {
@@ -261,8 +270,6 @@ button {
   transition:
     transform 0.2s,
     box-shadow 0.2s;
-  position: relative;
-  z-index: 11100;
 }
 
 #restartBtn:hover {
@@ -303,77 +310,4 @@ button {
   to {
     opacity: 1;
   }
-}
-
-/* Big celebratory caption */
-.video-container .big-caption {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  z-index: 11000;
-  margin-bottom: 8px;
-  padding-top: 6vh;
-}
-
-.video-container .big-caption .lines {
-  text-align: center;
-  line-height: 1.05;
-}
-
-.video-container .big-caption .line1 {
-  font-size: clamp(1.6rem, 6vw, 3.2rem);
-  font-weight: 900;
-  color: #ff2d6f; /* vivid pink */
-  text-shadow:
-    0 8px 30px rgba(255, 45, 111, 0.25),
-    0 3px 8px rgba(0, 0, 0, 0.32);
-  transform: scale(0.96);
-  animation: captionIn 0.9s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
-}
-
-.video-container .big-caption .line2 {
-  font-size: clamp(1rem, 4vw, 1.6rem);
-  font-weight: 700;
-  margin-top: 8px;
-  color: #fff;
-  text-shadow: 0 6px 20px rgba(0, 0, 0, 0.42);
-  animation: captionIn 1s 0.15s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
-}
-
-@keyframes captionIn {
-  0% {
-    opacity: 0;
-    transform: translateY(8px) scale(0.96);
-  }
-  60% {
-    opacity: 1;
-    transform: translateY(-6px) scale(1.02);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* subtle glow behind caption (kept relative) */
-.video-container .big-caption::before {
-  content: "";
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60vw;
-  max-width: 800px;
-  height: 14vh;
-  background: radial-gradient(
-    circle at 50% 40%,
-    rgba(255, 120, 160, 0.12),
-    transparent 40%
-  );
-  filter: blur(28px);
-  z-index: 10990;
-  opacity: 0.95;
 }

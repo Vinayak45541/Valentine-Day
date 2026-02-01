@@ -63,41 +63,15 @@ yesBtn.addEventListener("click", () => {
     videoContainer.appendChild(hearts);
   })();
 
-  // add large celebratory caption overlay
-  (function createBigCaption() {
+  // add caption above video
+  (function addCaption() {
     if (!videoContainer) return;
-    if (videoContainer.querySelector(".big-caption")) return;
+    if (videoContainer.querySelector(".video-caption")) return;
 
-    const cap = document.createElement("div");
-    cap.className = "big-caption";
-
-    const wrapper = document.createElement("div");
-    wrapper.className = "lines";
-
-    const line1 = document.createElement("div");
-    line1.className = "line1";
-    line1.textContent = "YAAAYYYY!!! 🥳";
-
-    const line2 = document.createElement("div");
-    line2.className = "line2";
-    line2.textContent = "YOU SAID YESSSS 😭❤️🔥";
-
-    wrapper.appendChild(line1);
-    wrapper.appendChild(line2);
-    cap.appendChild(wrapper);
-    // insert caption above the video element so it sits visually above
-    if (video && videoContainer.contains(video)) {
-      videoContainer.insertBefore(cap, video);
-    } else {
-      videoContainer.appendChild(cap);
-    }
-
-    // remove caption when video ends
-    const removeCaption = () => {
-      const c = videoContainer.querySelector(".big-caption");
-      if (c) c.remove();
-    };
-    video.addEventListener("ended", removeCaption, { once: true });
+    const caption = document.createElement("div");
+    caption.className = "video-caption";
+    caption.textContent = "YAAAYYYY!!! 🥳💖";
+    videoContainer.insertBefore(caption, video);
   })();
 });
 
@@ -106,8 +80,5 @@ restartBtn.addEventListener("click", () => {
   // remove hearts overlay if present
   const hearts = videoContainer.querySelector(".hearts");
   if (hearts) hearts.remove();
-  // remove big caption if present
-  const big = videoContainer.querySelector(".big-caption");
-  if (big) big.remove();
   location.reload();
 });
