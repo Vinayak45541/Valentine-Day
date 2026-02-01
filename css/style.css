@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  background: url("../assets/images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  backdrop-filter: blur(3px);
+}
+
+h1 {
+  color: #ff4f8b;
+  font-size: 2.2rem;
+  animation: fadeIn 2s ease;
+}
+
+#cat {
+  width: 200px;
+  animation: floatCat 3s ease-in-out infinite;
+  transition: transform 0.2s;
+}
+
+/* Buttons */
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+button {
+  padding: 14px 28px;
+  border-radius: 30px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+#yesBtn {
+  background: linear-gradient(45deg,#ff4f8b,#ff85b3);
+  color: white;
+  animation: pulse 1.3s infinite;
+}
+
+#noBtn {
+  background: white;
+  border: 2px solid #ff4f8b;
+  color: #ff4f8b;
+  position: relative;
+}
+
+/* Video */
+
+#loveVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  display: none;
+  z-index: 9999;
+}
+
+/* Animations */
+
+@keyframes pulse {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.15);}
+  100% {transform: scale(1);}
+}
+
+@keyframes floatCat {
+  0% {transform: translateY(0);}
+  50% {transform: translateY(-10px);}
+  100% {transform: translateY(0);}
+}
+
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
