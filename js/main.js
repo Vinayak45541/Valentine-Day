@@ -38,9 +38,36 @@ yesBtn.addEventListener("click", () => {
 
   video.muted = false;
   video.play();
+
+  // add decorative hearts overlay and floating animation
+  (function createHearts() {
+    if (!videoContainer) return;
+    // avoid duplicate hearts container
+    if (videoContainer.querySelector(".hearts")) return;
+
+    const hearts = document.createElement("div");
+    hearts.className = "hearts";
+    const count = 12;
+    for (let i = 0; i < count; i++) {
+      const s = document.createElement("span");
+      s.textContent = ["💖", "💕", "💘", "❤️"][Math.floor(Math.random() * 4)];
+      const left = Math.random() * 100; // vw
+      const duration = 4 + Math.random() * 4; // seconds
+      const delay = Math.random() * 1.5; // stagger
+      s.style.left = left + "vw";
+      s.style.animationDuration = duration + "s";
+      s.style.animationDelay = delay + "s";
+      s.style.opacity = 0;
+      hearts.appendChild(s);
+    }
+    videoContainer.appendChild(hearts);
+  })();
 });
 
 // RESTART BUTTON
 restartBtn.addEventListener("click", () => {
+  // remove hearts overlay if present
+  const hearts = videoContainer.querySelector(".hearts");
+  if (hearts) hearts.remove();
   location.reload();
 });

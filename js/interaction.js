@@ -14,8 +14,12 @@ function moveNoBtn() {
 if (noBtn) {
   noBtn.addEventListener("pointerenter", moveNoBtn);
   noBtn.addEventListener("mouseenter", moveNoBtn); // fallback for old browsers
-  noBtn.addEventListener("touchstart", function (e) {
-    e.preventDefault();
-    moveNoBtn();
-  }, { passive: false });
+  noBtn.addEventListener(
+    "touchstart",
+    function (e) {
+      e.preventDefault();
+      moveNoBtn();
+    },
+    { passive: false },
+  );
 }

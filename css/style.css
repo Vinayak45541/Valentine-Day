@@ -159,14 +159,79 @@ button {
 
 .video-container.active {
   display: flex;
+  /* animated background when active */
+  background: linear-gradient(120deg, #ff9ab3 0%, #ffc0d6 50%, #ffdfe8 100%);
+  animation: bgMove 10s ease-in-out infinite;
+  overflow: hidden;
 }
 
 #loveVideo {
-  width: 500px;
-  height: 500px;
+  width: min(500px, 80vw);
+  height: auto;
+  max-height: 80vh;
   object-fit: cover;
-  border-radius: 20px;
+  border-radius: 16px;
   box-shadow: 0 10px 50px rgba(255, 79, 139, 0.3);
+}
+
+/* Floating hearts overlay */
+.video-container .hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.video-container .hearts span {
+  position: absolute;
+  bottom: -40px;
+  font-size: 20px;
+  opacity: 0;
+  transform: translateY(0) scale(0.8);
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes bgMove {
+  0% {
+    filter: hue-rotate(0deg) saturate(1);
+    background-position: 0% 0%;
+  }
+  50% {
+    filter: hue-rotate(12deg) saturate(1.1);
+    background-position: 50% 50%;
+  }
+  100% {
+    filter: hue-rotate(0deg) saturate(1);
+    background-position: 0% 0%;
+  }
+}
+
+/* Smaller layout tweaks for narrow screens */
+@media (max-width: 480px) {
+  .video-container {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  #loveVideo {
+    width: 88vw;
+    max-height: 70vh;
+    border-radius: 12px;
+  }
 }
 
 #restartBtn {
